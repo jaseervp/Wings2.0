@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sora:wght@400;600;700;800&display=swap');
+
+@theme {
+  --color-primary: #1A7F8E;
+  --color-primary-100: #ccfbf1;
+  --color-secondary: #F76C6C;
+  --color-accent: #A78BFA;
+  --color-bg: #F8FBFC;
+  --color-card: #FFFFFF;
+  --color-text: #1E293B;
+  --color-muted: #64748B;
+  --color-success: #34D399;
+  
+  /* Admin Dashboard Extended Colors */
+  --color-admin-bg: #0F172A;
+  --color-admin-surface: #FFFFFF;
+  --color-admin-card: #F8FAFC;
+  --color-admin-accent: #6366F1;
+  --color-admin-warning: #F59E0B;
+  --color-admin-danger: #EF4444;
+  --color-admin-border: #E2E8F0;
+  
+  --font-heading: "Nunito", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-admin-heading: "Sora", sans-serif;
+  --font-admin-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
