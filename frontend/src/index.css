@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2563EB;
+  --color-primary-100: #dbeafe;
+  --color-secondary: #14B8A6;
+  --color-secondary-100: #ccfbf1;
+  --color-accent: #F59E0B;
+  --color-accent-100: #fef3c7;
+  --color-success: #22C55E;
+  --color-success-100: #dcfce7;
+  --color-bg: #F8FAFC;
+  --color-card: rgba(255, 255, 255, 0.8);
+  --color-text: #0F172A;
+  --color-muted: #64748B;
+  --color-border: #E2E8F0;
+  
+  /* Admin Dashboard Extended Colors */
+  --color-admin-bg: #0F172A;
+  --color-admin-surface: #FFFFFF;
+  --color-admin-card: #F8FAFC;
+  --color-admin-accent: #6366F1;
+  --color-admin-warning: #F59E0B;
+  --color-admin-danger: #EF4444;
+  --color-admin-border: #E2E8F0;
+  
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-admin-heading: "Plus Jakarta Sans", sans-serif;
+  --font-admin-body: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+}
