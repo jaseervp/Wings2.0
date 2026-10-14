@@ -79,6 +79,23 @@ export class Child {
 
   @Prop({ default: 'ACTIVE' })
   status: string;
+
+  // Clinical / Assessment summaries
+  @Prop({ trim: true, default: 'PENDING' })
+  diagnosis: string;
+
+  @Prop({ trim: true, default: null })
+  iqBand: string;
+
+  @Prop({ default: null })
+  lastExamDate: Date;
 }
 
 export const ChildSchema = SchemaFactory.createForClass(Child);
+
+ChildSchema.index({ createdAt: -1 });
+ChildSchema.index({ firstName: 1, lastName: 1 });
+ChildSchema.index({ gender: 1 });
+ChildSchema.index({ dateOfBirth: 1 });
+ChildSchema.index({ diagnosis: 1 });
+ChildSchema.index({ iqBand: 1 });
