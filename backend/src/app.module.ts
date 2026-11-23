@@ -11,6 +11,7 @@ import { ChildrenModule } from './modules/children/children.module';
 import { AssessmentModule } from './modules/assessment/assessment.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { DietModule } from './modules/diet/diet.module';
+import { ExerciseModule } from './modules/exercise/exercise.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { DietModule } from './modules/diet/diet.module';
     AssessmentModule,
     AdminModule,
     DietModule,
+    ExerciseModule,
   ],
 
   controllers: [AppController],

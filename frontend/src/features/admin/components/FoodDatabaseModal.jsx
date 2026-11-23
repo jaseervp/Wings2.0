@@ -66,6 +66,7 @@ export const FoodDatabaseModal = ({ isOpen, onClose, onUpdated }) => {
         setNewFoodName('');
         setNewFoodAllergens('');
         setNewFoodCalories('');
+        setNewFoodServing('1 serving');
         setShowAddForm(false);
         loadFoods();
         if (onUpdated) onUpdated('Food item added to database');
@@ -160,7 +161,7 @@ export const FoodDatabaseModal = ({ isOpen, onClose, onUpdated }) => {
         {showAddForm && (
           <form onSubmit={handleCreateFood} className="p-4 bg-blue-50/50 border border-blue-100 rounded-2xl mb-4 space-y-3 shrink-0 animate-in fade-in">
             <h4 className="text-xs font-bold text-text uppercase font-mono">Add New Food Item</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               <div>
                 <label className="block text-[11px] font-bold text-gray-600 mb-1">Food Name *</label>
                 <input
@@ -189,12 +190,36 @@ export const FoodDatabaseModal = ({ isOpen, onClose, onUpdated }) => {
               </div>
 
               <div>
+                <label className="block text-[11px] font-bold text-gray-600 mb-1">Calories (kcal)</label>
+                <input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value={newFoodCalories}
+                  onChange={(e) => setNewFoodCalories(e.target.value)}
+                  placeholder="e.g. 150"
+                  className="w-full px-3 py-1.5 bg-white border border-gray-200 rounded-xl text-xs font-medium outline-none focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-bold text-gray-600 mb-1">Serving Size</label>
+                <input
+                  type="text"
+                  value={newFoodServing}
+                  onChange={(e) => setNewFoodServing(e.target.value)}
+                  placeholder="e.g. 100 g, 1 cup, 1 medium"
+                  className="w-full px-3 py-1.5 bg-white border border-gray-200 rounded-xl text-xs font-medium outline-none focus:border-primary"
+                />
+              </div>
+
+              <div className="sm:col-span-2 md:col-span-2">
                 <label className="block text-[11px] font-bold text-gray-600 mb-1">Allergens (comma separated)</label>
                 <input
                   type="text"
                   value={newFoodAllergens}
                   onChange={(e) => setNewFoodAllergens(e.target.value)}
-                  placeholder="e.g. Gluten, Dairy"
+                  placeholder="e.g. Gluten, Dairy, Peanuts"
                   className="w-full px-3 py-1.5 bg-white border border-gray-200 rounded-xl text-xs font-medium outline-none focus:border-primary"
                 />
               </div>
@@ -204,14 +229,14 @@ export const FoodDatabaseModal = ({ isOpen, onClose, onUpdated }) => {
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-3 py-1.5 text-xs font-bold text-gray-500 hover:text-text rounded-lg"
+                className="px-3 py-1.5 text-xs font-bold text-gray-500 hover:text-text rounded-lg cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-4 py-1.5 bg-primary text-white text-xs font-bold rounded-xl shadow-sm hover:bg-primary/90 flex items-center gap-1.5"
+                className="px-4 py-1.5 bg-primary text-white text-xs font-bold rounded-xl shadow-sm hover:bg-primary/90 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 {submitting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Plus className="w-3.5 h-3.5" />}
                 Save Food Item
@@ -252,7 +277,7 @@ export const FoodDatabaseModal = ({ isOpen, onClose, onUpdated }) => {
                     </div>
                     <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-gray-500 font-medium">
                       <span>Serving: {food.servingUnit || '1 serving'}</span>
-                      {food.nutrition?.calories && (
+                      {food.nutrition?.calories != null && food.nutrition?.calories !== '' && (
                         <span>• {food.nutrition.calories} kcal</span>
                       )}
                       {food.allergens && food.allergens.length > 0 && (
